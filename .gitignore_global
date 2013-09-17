@@ -45,6 +45,7 @@ Thumbs.db
 *.so
 *.so.*
 *.dylib
+*.pc
 
 # Executables
 *.exe
