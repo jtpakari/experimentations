@@ -3,7 +3,7 @@
 Name        : main.c
 Author      : Janne Pakarinen
 Version     : 1.0
-Copyright   : gingerale (c) 2013
+Copyright   : Janne Pakarinen (c) 2013
 Description : Experiments in Allegro
 ============================================================================
 */
