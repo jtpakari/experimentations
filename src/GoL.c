@@ -63,13 +63,13 @@ void handle_rows(void)
     {
       bool alive;
       uint64_t neigh_prev, neigh_cur, neigh_next;
-      uint32_t neighbours = 0;
+      uint32_t neighbours = 0, steps = (j - 1);
 
-      alive = ((uint64_t)((row >> (j - 1)) & 0x02) > 0);
+      alive = ((uint64_t)((row >> steps) & 0x02) > 0);
 
-      neigh_prev = (uint64_t)((prev >> (j - 1)) & 0x07); // 0111
-      neigh_cur = (uint64_t)((row >> (j - 1)) & 0x05);   // 0101
-      neigh_next = (uint64_t)((next >> (j - 1)) & 0x07); // 0111
+      neigh_prev = (uint64_t)((prev >> steps) & 0x07); // 0111
+      neigh_cur = (uint64_t)((row >> steps) & 0x05);   // 0101
+      neigh_next = (uint64_t)((next >> steps) & 0x07); // 0111
 
       if (neigh_prev > 0)
       {
@@ -100,7 +100,7 @@ void handle_rows(void)
       }
 
       if (neighbours == 3 || (alive && neighbours == 2))
-        new_row |= (uint64_t)(((uint64_t)0x02) << (j - 1));
+        new_row |= (uint64_t)(((uint64_t)0x02) << steps);
     }
 
     new_rows[i] = new_row;
