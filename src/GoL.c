@@ -61,7 +61,7 @@ void handle_rows(void)
 
     for (j = 0; j < COLS; j++)
     {
-      boolean alive;
+      bool alive;
       uint64_t neigh_prev, neigh_cur, neigh_next;
       uint32_t neighbours = 0;
 
