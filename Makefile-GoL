@@ -1,16 +1,22 @@
 CC=gcc
-CFLAGS=-Wall
-CINC=-Iinclude/
+CFLAGS=-Wall -c -Iinclude/
 LDFLAGS=
+LIBS=-Llib/allegro -lallegro -lallegro_primitives
 SRCS=src/GoL.c
 OBJS=$(SRCS:.c=.o)
-EXECUTABLE=build/GoL
+BIN=build/GoL
+#export LD_LIBRARY_PATH=/cs/fs/home/jtpakari/git/experimentations/lib/allegro
+export LD_LIBRARY_PATH := $(shell pwd)/lib/allegro:$(LD_LIBRARY_PATH)
 
-all: $(SRCS) $(EXECUTABLE)
+all: $(SRCS) $(BIN)
 
-$(EXECUTABLE): $(OBJS)
-	$(CC) $(LDFLAGS) $(OBJS) -o $@
+$(BIN): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@ $(LIBS)
+	export LD_LIBRARY_PATH
 
-$(SRCS) $(OBJS):
-	$(CC) $(CFLAGS) $(CINC) $(SRCS) -o $(OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(OBJS) $(BIN) *~
 
