@@ -5,14 +5,11 @@ LIBS=-Llib/allegro -lallegro -lallegro_primitives
 SRCS=src/GoL.c
 OBJS=$(SRCS:.c=.o)
 BIN=build/GoL
-#export LD_LIBRARY_PATH=/cs/fs/home/jtpakari/git/experimentations/lib/allegro
-export LD_LIBRARY_PATH := $(shell pwd)/lib/allegro:$(LD_LIBRARY_PATH)
 
 all: $(SRCS) $(BIN)
 
 $(BIN): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $@ $(LIBS)
-	export LD_LIBRARY_PATH
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
