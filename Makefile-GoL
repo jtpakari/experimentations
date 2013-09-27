@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-Wall
+CINC=-Iinclude/
+LDFLAGS=
+SRCS=src/GoL.c
+OBJS=$(SRCS:.c=.o)
+EXECUTABLE=build/GoL
+
+all: $(SRCS) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@
+
+$(SRCS) $(OBJS):
+	$(CC) $(CFLAGS) $(CINC) $(SRCS) -o $(OBJS)
+
