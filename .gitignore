@@ -53,4 +53,6 @@ Thumbs.db
 *.app
 
 # Build folder
+build
+build/*
 build/**/*
